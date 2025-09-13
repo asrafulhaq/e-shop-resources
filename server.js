@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import colors from "colors";
+import brandRouter from "./router/brand.js";
 
 
 // env vars 
@@ -13,6 +14,10 @@ const app = express();
 // support 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+
+// routing 
+app.use("/api/v1/brand", brandRouter);
 
 // listen 
 app.listen(PORT, () => {
