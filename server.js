@@ -2,6 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import colors from "colors";
 import brandRouter from "./router/brand.js";
+import categoryRouter from "./router/category.js";
+import tagRouter from "./router/tag.js";
 
 
 // env vars 
@@ -18,6 +20,8 @@ app.use(express.urlencoded({ extended: false }));
 
 // routing 
 app.use("/api/v1/brand", brandRouter);
+app.use("/api/v1/category", categoryRouter);
+app.use("/api/v1/tag", tagRouter);
 
 // listen 
 app.listen(PORT, () => {

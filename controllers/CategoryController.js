@@ -8,10 +8,10 @@ import prisma from "../config/client.js";
  * @method GET 
  * @endpoint /api/v1/brand 
  */
-export const getAllBrands = anyncHandler( async(req, res) => {
+export const getAllCategory = anyncHandler( async(req, res) => {
 
     // get all brands data form db
-    const data = await prisma.Brand.findMany();
+    const data = await prisma.Category.findMany();
 
     // response 
     res.status(200).json( data );
@@ -24,13 +24,13 @@ export const getAllBrands = anyncHandler( async(req, res) => {
  * @method GET 
  * @endpoint /api/v1/brand/:id 
  */
-export const getSingleBrand = anyncHandler( async(req, res) => {
+export const getSingleCategory = anyncHandler( async(req, res) => {
 
     // get brand id 
     const { id } = req.params;
 
     // get all brands data form db
-    const data = await prisma.Brand.findUnique({
+    const data = await prisma.Category.findUnique({
         where : { id }
     });
 
@@ -46,14 +46,14 @@ export const getSingleBrand = anyncHandler( async(req, res) => {
  * @method GET 
  * @endpoint /api/v1/brand/:id 
  */
-export const createBrand = anyncHandler( async(req, res) => {
+export const createCategory = anyncHandler( async(req, res) => {
 
     // get all brands data form db
-    const data = await prisma.Brand.create({
+    const data = await prisma.Category.create({
         data : { 
             name : req.body.name,
             slug : req.body.slug, 
-            logo : req.file.path
+            photo : req.file.path
         }
     });
 
@@ -69,13 +69,13 @@ export const createBrand = anyncHandler( async(req, res) => {
  * @method GET 
  * @endpoint /api/v1/brand/:id 
  */
-export const deleteBrand = anyncHandler( async(req, res) => {
+export const deleteCategory = anyncHandler( async(req, res) => {
 
     // get id 
     const { id } = req.params;
 
     // get all brands data form db
-    const data = await prisma.brand.delete({
+    const data = await prisma.Category.delete({
         where : { id }
     });
 
@@ -91,13 +91,13 @@ export const deleteBrand = anyncHandler( async(req, res) => {
  * @method GET 
  * @endpoint /api/v1/brand/:id 
  */
-export const updateBrand = anyncHandler( async(req, res) => {
+export const updateCategory = anyncHandler( async(req, res) => {
 
     // get id 
     const { id } = req.params;
 
     // get all brands data form db
-    const data = await prisma.brand.update({
+    const data = await prisma.Category.update({
         where : { id },
         data : req.body
     });
